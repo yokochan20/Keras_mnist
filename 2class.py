@@ -1,15 +1,19 @@
-import numpy as np
-import keras
+#-*- coding: utf-8 -*-
 
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import label_binarize
-from keras.models import Sequential, Model
-from keras.layers import Dense, Activation, Input, Conv2D
-from keras.layers import Maxpooling2D
-from keras import optimizers
+def import_module():
+    import numpy as np
+    import keras
 
-x = np.load("/Users/SatoshiYokoyama/D-HACKS/image.npy")
-y = np.load("/Users/SatoshiYokoyama/D-HACKS/labels.npy")
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import label_binarize
+    from keras.models import Sequential, Model
+    from keras.layers import Dense, Activation, Input, Conv2D
+    from keras.layers import MaxPooling2D
+    from keras import optimizers
+
+def import_dataset():
+    x = np.load("/Users/SatoshiYokoyama/D-HACKS/image.npy")
+    y = np.load("/Users/SatoshiYokoyama/D-HACKS/labels.npy")
 
 
 def classify_labels():
@@ -81,7 +85,8 @@ def compile1():
 def evaluate1():
     model.evaluate(x_test,y_test,metrics=["accuracy"])
 
-
+import_module()
+import_dataset()
 classify_labels()
 model1()
 compile1()
