@@ -9,15 +9,18 @@ def import_model():
     from keras.models import Sequential, Model
     from keras.layers import Dense, Activation, Input
     from keras import optimizers
+    from sklearn.preprocessing import label_binarize
 
-def import_dataset():
+#def import_dataset():
     x = np.load("/Users/SatoshiYokoyama/D-HACKS/image.npy")
-    y = np.load("/Users/SatoshiYokoyama/D-HACKS/labels.npy")
+    #y = np.load("/Users/SatoshiYokoyama/D-HACKS/labels.npy")
+    y0 = np.load("/Users/SatoshiYokoyama/D-HACKS/labels.npy")
 
 #ラベルをone_hot vectorにする
 def one_hot():
-    global y
-    y = label_binarize(y,classes=list(range(10)))
+    from sklearn.preprocessing import label_binarize
+    #global y
+    y = label_binarize(y0,classes=list(range(10)))
 
 #train_test_valid_datasetを作成
 def mk_dataset():
@@ -70,7 +73,7 @@ def evaluate1():
     model.evaluate(x_test,y_test,metrics=["accuracy"])
 
 import_model()
-import_dataset()
+#import_dataset()
 one_hot()
 mk_dataset()
 model1()
